@@ -16,7 +16,8 @@ export default function ResetPassword() {
   useEffect(() => {
     const handleResetCallback = async () => {
       const url = new URL(window.location.href);
-      const code = url.searchParams.get('code');
+      const token_hash = url.searchParams.get('token_hash');
+      const type = url.searchParams.get('type');
       const error = url.searchParams.get('error');
       const errorDescription = url.searchParams.get('error_description');
 
@@ -26,13 +27,16 @@ export default function ResetPassword() {
         return;
       }
 
-      if (code) {
+      if (token_hash && type === 'recovery') {
         try {
-          const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
+          const { error: verifyError } = await supabase.auth.verifyOtp({
+            token_hash,
+            type: 'recovery',
+          });
           
-          if (exchangeError) {
+          if (verifyError) {
             setIsError(true);
-            setStatus(`Ein Fehler ist aufgetreten: ${exchangeError.message}`);
+            setStatus(`Ein Fehler ist aufgetreten: ${verifyError.message}`);
           } else {
             setIsError(false);
             setShowForm(true);
