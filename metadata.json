@@ -1,0 +1,6 @@
+{
+  "name": "PLYRZ Landing Page",
+  "description": "Moderne One-Page Website für die Fußball-App PLYRZ",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
