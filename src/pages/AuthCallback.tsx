@@ -1,18 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import { Loader2 } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 export default function AuthCallback() {
   const [status, setStatus] = useState<string>("E-Mail wird bestätigt …");
+  const [isError, setIsError] = useState<boolean>(false);
 
-  // Keep query and hash params intact for Supabase Client or App Deep Linking
   useEffect(() => {
-    // In a real Supabase Auth setup, you might exchange the token here on the web,
-    // but since the actual app handles it, we just display the message.
-    // Deep linking on iOS/Android should intercept the URL before the web page loads,
-    // but if the user opens it in a browser, they see this fallback page.
-    setTimeout(() => {
-      setStatus("Falls du nicht automatisch weitergeleitet wirst, öffne die PLYRZ App und melde dich an.");
-    }, 3000);
+    const handleAuthCallback = async () => {
+      const url = new URL(window.location.href);
+      const code = url.searchParams.get('code');
+      const error = url.searchParams.get('error');
+      const errorDescription = url.searchParams.get('error_description');
+
+      if (error) {
+        setIsError(true);
+        setStatus(`Ein Fehler ist aufgetreten: ${errorDescription || error}`);
+        return;
+      }
+
+      if (code) {
+        try {
+          const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
+          
+          if (exchangeError) {
+            setIsError(true);
+            setStatus(`Ein Fehler ist aufgetreten: ${exchangeError.message}`);
+          } else {
+            setIsError(false);
+            setStatus("E-Mail bestätigt. Du kannst jetzt die PLYRZ App öffnen und dich einloggen.");
+          }
+        } catch (err: any) {
+          setIsError(true);
+          setStatus(`Ein Fehler ist aufgetreten: ${err.message}`);
+        }
+      } else {
+        // Fallback or hash based
+        supabase.auth.getSession().then(({ data: { session } }) => {
+          if (session) {
+             setIsError(false);
+             setStatus("E-Mail bestätigt. Du kannst jetzt die PLYRZ App öffnen und dich einloggen.");
+          } else {
+             // Let it spin for a bit in case it's doing implicit flow processing automatically
+             setTimeout(() => {
+                setStatus("Falls du nicht automatisch weitergeleitet wirst, öffne die PLYRZ App und melde dich an.");
+             }, 3000);
+          }
+        });
+      }
+    };
+
+    handleAuthCallback();
   }, []);
 
   return (
@@ -26,7 +64,7 @@ export default function AuthCallback() {
           )}
         </div>
         <h1 className="text-2xl font-heading font-bold uppercase tracking-tight text-white mb-2">Supabase Auth</h1>
-        <p className="text-gray-300 leading-relaxed text-lg font-medium">{status}</p>
+        <p className={`leading-relaxed text-lg font-medium ${isError ? 'text-red-400' : 'text-gray-300'}`}>{status}</p>
       </div>
     </div>
   );
