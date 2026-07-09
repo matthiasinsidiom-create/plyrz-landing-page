@@ -16,7 +16,7 @@ export default function Impressum() {
           <div className="mb-8">
             <h2 className="text-2xl font-bold text-primary-neon mb-4">1. Anbieter / Betreiber</h2>
             <p className="mb-2"><strong>Einzelunternehmen</strong></p>
-            <p className="mb-2">Name/Firmenwortlaut: [DEIN VOLLSTÄNDIGER NAME EINSETZEN]</p>
+            <p className="mb-2">Name/Firmenwortlaut: Matthias Jörgler</p>
             <p className="mb-2">
               Adresse: Hauptplatz 10/1/1<br />
               3202 Hofstetten<br />

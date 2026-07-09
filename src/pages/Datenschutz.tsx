@@ -23,7 +23,7 @@ export default function Datenschutz() {
           <h2 className="text-2xl font-bold mt-8 mb-4">1. Verantwortlicher</h2>
           <p className="mb-4">
             Verantwortlich für die Datenverarbeitung im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:<br />
-            [DEIN VOLLSTÄNDIGER NAME EINSETZEN]<br />
+            Matthias Jörgler<br />
             Hauptplatz 10/1/1<br />
             3202 Hofstetten<br />
             Österreich<br />

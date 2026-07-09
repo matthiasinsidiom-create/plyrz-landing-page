@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { Menu, X, ChevronRight, CheckCircle2, Trophy, ArrowRight, ShieldCheck, BarChart3, Users, PlaySquare } from 'lucide-react';
+import { Menu, X, ChevronRight, CheckCircle2, Trophy, ArrowRight, ShieldCheck, BarChart3, Users, PlaySquare, Home, Calendar, ThumbsUp, List } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { AppStoreButton } from '../components/AppStoreButton';
 import { PlayerCard } from '../components/PlayerCard';
@@ -35,7 +35,6 @@ export default function App() {
             <a href="#spieler" className="hover:text-primary-neon transition-colors">Für Spieler</a>
             <a href="#fans" className="hover:text-primary-neon transition-colors">Für Fans</a>
             <a href="#vereine" className="hover:text-primary-neon transition-colors">Für Vereine</a>
-            <a href="#top10" className="hover:text-primary-neon transition-colors">Top 10</a>
             <a href="#download" className="hover:text-primary-neon transition-colors">Download</a>
             <a href="#kontakt" className="hover:text-primary-neon transition-colors">Kontakt</a>
             <a href="#download" className="px-5 py-2 rounded-lg border border-primary-neon text-primary-neon hover:bg-primary-neon hover:text-black transition-colors font-bold tracking-wide">
@@ -57,7 +56,6 @@ export default function App() {
               <a href="#spieler" onClick={() => setMobileMenuOpen(false)} className="text-lg">Für Spieler</a>
               <a href="#fans" onClick={() => setMobileMenuOpen(false)} className="text-lg">Für Fans</a>
               <a href="#vereine" onClick={() => setMobileMenuOpen(false)} className="text-lg">Für Vereine</a>
-              <a href="#top10" onClick={() => setMobileMenuOpen(false)} className="text-lg">Top 10</a>
               <a href="#download" onClick={() => setMobileMenuOpen(false)} className="text-lg">Download</a>
               <a href="#kontakt" onClick={() => setMobileMenuOpen(false)} className="text-lg">Kontakt</a>
               <a href="#download" onClick={() => setMobileMenuOpen(false)} className="px-5 py-3 mt-4 text-center rounded-xl bg-primary-neon text-black font-bold text-lg">
@@ -125,71 +123,14 @@ export default function App() {
               <motion.div 
                 animate={{ rotateY: -15, rotateZ: 5, rotateX: 10 }}
                 transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-                className="relative w-[300px] h-[600px] md:w-[340px] md:h-[680px] bg-dark-card border-[6px] border-[#1f2428] rounded-[3rem] shadow-[20px_20px_60px_rgba(0,0,0,0.5)] z-10 overflow-hidden ring-1 ring-white/10 md:ml-32 hover:!rotate-y-0 transition-transform duration-700 ease-in-out"
+                className="relative w-[300px] h-[650px] md:w-[330px] md:h-[714px] bg-dark-card border-[6px] border-[#1f2428] rounded-[2.5rem] shadow-[20px_20px_60px_rgba(0,0,0,0.5)] z-10 overflow-hidden ring-1 ring-white/10 md:ml-32 hover:!rotate-y-0 transition-transform duration-700 ease-in-out"
                 style={{ transformStyle: 'preserve-3d' }}
               >
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-7 bg-[#1f2428] rounded-b-3xl z-50"></div>
-                {/* Fake App Content */}
-                <div className="w-full h-full bg-[#0a0a0c] rounded-[2.5rem] p-4 flex flex-col pt-12 relative overflow-hidden">
-                  
-                  {/* Background burst inside app */}
-                  <div className="absolute top-0 left-0 w-full h-[300px] overflow-hidden -z-0">
-                     <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-full h-full">
-                       {[...Array(20)].map((_, i) => (
-                         <div key={i} className="absolute top-1/2 left-1/2 w-[2px] h-[300px] bg-gradient-to-t from-transparent to-primary-gold/40 origin-top" style={{ transform: `rotate(${i * 18}deg)` }}></div>
-                       ))}
-                     </div>
-                  </div>
-
-                  <div className="flex items-center gap-3 mb-6 z-20 relative opacity-80 pt-2 px-2">
-                    <button className="p-2 bg-white/10 rounded-full"><ChevronRight className="text-white transform rotate-180" size={20}/></button>
-                    <div className="flex-1 text-center font-heading font-bold text-lg tracking-wider">
-                      YANNIK JUNG
-                    </div>
-                    <button className="p-2"><Menu className="text-white" size={20}/></button>
-                  </div>
-                  
-                  <div className="flex justify-center z-20 relative mb-2">
-                     <div className="relative w-48">
-                       <PlayerCard 
-                          name="JUNG" 
-                          rating={64} 
-                          position="STU" 
-                          stats={{TEM: 54, SCH: 56, PAS: 55, DRI: 54, DEF: 50, PHY: 50}} 
-                          theme="gold"
-                        />
-                     </div>
-                  </div>
-
-                  <div className="mt-8 z-20 relative px-2 flex-grow bg-[#14161a] -mx-4 pb-4">
-                     <div className="flex justify-between border-b mx-4 mb-4 pt-4 border-white/10 text-[10px] text-gray-500 font-bold tracking-wider">
-                        <span className="text-white border-b-2 border-primary-neon pb-2">ÜBERSICHT</span>
-                        <span>STATS</span>
-                        <span>MVPS</span>
-                        <span>VERLAUF</span>
-                     </div>
-                     <div className="flex items-center justify-center gap-2 mb-4 text-xs font-bold text-gray-400">
-                        <ChevronRight className="transform rotate-180" size={14}/>
-                        <span className="tracking-widest">SAISON 2025/26</span>
-                        <ChevronRight size={14}/>
-                     </div>
-                     <div className="grid grid-cols-4 gap-2 text-center text-[10px] px-2">
-                        <div><span className="block text-gray-500 mb-1">SPIELE</span><span className="text-xl font-heading font-bold text-white">18</span></div>
-                        <div><span className="block text-gray-500 mb-1">TORE</span><span className="text-xl font-heading font-bold text-white">7</span></div>
-                        <div><span className="block text-gray-500 mb-1">ASSISTS</span><span className="text-xl font-heading font-bold text-white">4</span></div>
-                        <div><span className="block text-primary-gold mb-1">Ø NOTE</span><span className="text-xl font-heading font-bold text-primary-gold">6.8</span></div>
-                     </div>
-                  </div>
-                  
-                  {/* Bottom App Nav */}
-                  <div className="h-16 border-t border-white/5 flex justify-between items-center px-6 absolute bottom-0 left-0 w-full bg-[#14161a] z-50">
-                    <div className="flex flex-col items-center opacity-100 text-primary-neon"><span className="text-xs mb-1">⊕</span><span className="text-[8px]">Home</span></div>
-                    <div className="flex flex-col items-center opacity-50"><span className="text-xs mb-1">◯</span><span className="text-[8px]">Live</span></div>
-                    <div className="flex flex-col items-center opacity-50"><span className="text-xs mb-1">◯</span><span className="text-[8px]">Votings</span></div>
-                    <div className="flex flex-col items-center opacity-50"><span className="text-xs mb-1">◯</span><span className="text-[8px]">Ranking</span></div>
-                    <div className="flex flex-col items-center opacity-50"><span className="text-xs mb-1">◯</span><span className="text-[8px]">Menü</span></div>
-                  </div>
-
+                {/* App Screenshot */}
+                <div className="w-full h-full bg-[#0a0a0c] rounded-[2rem] relative overflow-hidden flex flex-col items-center">
+                  {/* Mockup Image */}
+                  <img src="/mockup.png" alt="PLYRZ App Mockup" className="absolute inset-0 w-full h-full object-cover object-top mt-2" />
                 </div>
               </motion.div>
 
@@ -228,7 +169,7 @@ export default function App() {
               <FeatureItem icon={<Trophy size={48} className="text-white" strokeWidth={1}/>} title="MVP VOTING" desc="Die Fans entscheiden den besten Spieler." />
               <FeatureItem icon={<BarChart3 size={48} className="text-white" strokeWidth={1} />} title="RATING SYSTEM" desc="Verbessere dein Rating von Spiel zu Spiel." />
               <FeatureItem icon={<ShieldCheck size={48} className="text-white" strokeWidth={1} />} title="EIGENE SPIELERKARTE" desc="Deine Karte. Deine Performance." />
-              <FeatureItem icon={<BarChart3 size={48} className="text-white" strokeWidth={1} className="transform -scale-y-100" />} title="SAISONSTATISTIKEN" desc="Verfolge deine gesamte Saison im Detail." />
+              <FeatureItem icon={<BarChart3 size={48} className="text-white transform -scale-y-100" strokeWidth={1} />} title="SAISONSTATISTIKEN" desc="Verfolge deine gesamte Saison im Detail." />
               <FeatureItem icon={<Users size={48} className="text-white" strokeWidth={1} />} title="SPIELERRANKING" desc="Sieh wer im Ranking vorne ist" />
             </div>
           </div>
@@ -360,86 +301,9 @@ export default function App() {
         </div>
       </section>
 
-      {/* Top 10 Podium */}
-      <section id="top10" className="py-24 bg-dark-card border-y border-white/5 relative overflow-hidden">
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[20%] w-full max-w-4xl h-[300px] bg-primary-gold/10 blur-[150px] rounded-[100%] pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          
-          <div className="grid lg:grid-cols-3 gap-12 items-center">
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="lg:col-span-1 text-center lg:text-left"
-            >
-              <h2 className="text-4xl md:text-[2.75rem] font-heading font-bold mb-6 uppercase leading-none tracking-tight">
-                TOP SPIELER<br/><span className="text-primary-neon">DER SAISON</span>
-              </h2>
-              <p className="text-xl text-gray-400 mb-10 leading-relaxed max-w-[200px] mx-auto lg:mx-0">
-                Die besten Spieler. Eine Rangliste.<br/> Ein Ziel.
-              </p>
-              <a href="#download" className="inline-block px-10 py-3 border border-primary-neon text-primary-neon font-bold hover:bg-primary-neon hover:text-black transition-colors rounded-lg tracking-wide uppercase">
-                Top 10 Ansehen
-              </a>
-            </motion.div>
-
-            <div className="lg:col-span-2">
-              <div className="flex flex-col md:flex-row items-center md:items-end justify-center gap-4 md:gap-0 h-[600px] md:h-[450px]">
-                
-                 {/* Rank 2 - Silver */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                  className="relative z-10 flex flex-col items-center transform md:-translate-y-8 md:mr-[-30px]"
-                >
-                  <PlayerCard 
-                    name="MAYER" rating={63} position="STU" 
-                    stats={{TEM: 53, SCH: 53, PAS: 53, DRI: 51, DEF: 49, PHY: 49}} 
-                    theme="silver" className="scale-[0.8] origin-bottom md:scale-[0.85] drop-shadow-2xl"
-                  />
-                  <div className="w-40 h-20 bg-gradient-to-t from-dark-bg to-gray-800 hidden md:flex items-center justify-center font-heading text-4xl font-bold text-gray-400 rounded-t-lg shadow-[0_-5px_15px_rgba(0,0,0,0.5)] mt-6 border-b-0 border-t border-x border-gray-700">2</div>
-                </motion.div>
-
-                {/* Rank 1 - Gold */}
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.9, y: 50 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="relative z-30 flex flex-col items-center order-first md:order-none mb-8 md:mb-0"
-                >
-                  <PlayerCard 
-                    name="JUNG" rating={64} position="STU" 
-                    stats={{TEM: 54, SCH: 56, PAS: 55, DRI: 54, DEF: 50, PHY: 50}} 
-                    theme="gold" className="scale-[0.95] origin-bottom md:scale-100 drop-shadow-[0_0_30px_rgba(255,215,0,0.2)]"
-                  />
-                  <div className="w-48 h-32 bg-gradient-to-t from-dark-bg via-[#3a2f00] to-primary-gold hidden md:flex items-center justify-center font-heading text-6xl font-black text-[#151A1E] rounded-t-lg mt-6 relative overflow-hidden shadow-[0_-10px_30px_rgba(255,215,0,0.15)] border-t border-x border-primary-gold/50">
-                    <div className="absolute inset-x-0 top-0 h-1 bg-white/40 blur-[1px]"></div>
-                    1
-                  </div>
-                </motion.div>
-
-                {/* Rank 3 - Bronze */}
-                 <motion.div 
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 }}
-                  className="relative z-10 flex flex-col items-center transform md:-translate-y-12 md:ml-[-30px]"
-                >
-                  <PlayerCard 
-                    name="HUBER" rating={62} position="STU" 
-                    stats={{TEM: 51, SCH: 52, PAS: 52, DRI: 51, DEF: 47, PHY: 48}} 
-                    theme="bronze" className="scale-[0.8] origin-bottom md:scale-[0.8]"
-                  />
-                   <div className="w-40 h-16 bg-gradient-to-t from-dark-bg to-[#3d2314] hidden md:flex items-center justify-center font-heading text-4xl font-bold text-[#cd7f32] rounded-t-lg mt-6 shadow-[0_-5px_15px_rgba(0,0,0,0.5)] border-t border-x border-[#5a341d]">3</div>
-                </motion.div>
-
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Top Spieler Saison Image */}
+      <section className="w-full relative bg-dark-bg border-y border-white/5">
+        <img src="/top_spieler_saison.png" alt="Top Spieler der Saison" className="w-full h-auto object-cover" />
       </section>
 
       {/* Download Section */}
@@ -497,31 +361,7 @@ export default function App() {
       <footer id="kontakt" className="border-t border-white/10 pt-16 pb-8 bg-dark-bg relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           
-          <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16 border-b border-white/10 pb-16">
-             <div className="flex flex-col gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#00ff41" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-primary-neon uppercase tracking-wide text-sm">MATTHIAS JÖRGLER</h4>
-                    <a href="mailto:matthias.insidiom@gmail.com" className="text-gray-300 hover:text-white transition-colors">matthias.insidiom@gmail.com</a>
-                  </div>
-                </div>
-             </div>
-
-             <div className="flex flex-col gap-6">
-                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#00ff41" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-primary-neon uppercase tracking-wide text-sm">SUPPORT</h4>
-                    <a href="mailto:support@plyrz.at" className="text-gray-300 hover:text-white transition-colors">support@plyrz.at</a>
-                  </div>
-                </div>
-             </div>
-
+          <div className="flex flex-col md:flex-row justify-end items-start gap-12 mb-16 border-b border-white/10 pb-16">
              <div className="opacity-90 w-48 -mr-8 -mt-10 self-center md:self-end">
                <div className="relative flex justify-center items-center">
                  {/* Radial burst behind logo area */}
