@@ -20,9 +20,9 @@ export function AppStoreButton({ platform, className = '', outline = false }: Ap
       className={`${baseClasses} ${className}`}
     >
       {isIOS ? (
-        <img src="/app_store_badge.png" alt="Download on the App Store" className="h-14 w-auto object-contain" />
+        <img src="/ios_btn.png" alt="Download on the App Store" className="h-14 w-auto object-contain" />
       ) : (
-        <img src="/google_play_badge.png" alt="Get it on Google Play" className="h-14 w-auto object-contain" />
+        <img src="/android_btn.png" alt="Get it on Google Play" className="h-14 w-auto object-contain" />
       )}
     </a>
   );
