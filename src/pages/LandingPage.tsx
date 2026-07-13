@@ -334,25 +334,6 @@ export default function App() {
                <AppStoreButton platform="ios" />
                <AppStoreButton platform="android" outline />
             </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="flex-1 flex justify-center lg:justify-end gap-6 relative z-10"
-            >
-              {[1, 2].map(i => (
-                <div key={i} className="w-48 h-48 bg-white p-3 flex items-center justify-center relative overflow-hidden border border-white/20">
-                  {/* Decorative corner brackets */}
-                  <div className="absolute top-1 left-1 w-4 h-4 border-t-4 border-l-4 border-primary-neon"></div>
-                  <div className="absolute top-1 right-1 w-4 h-4 border-t-4 border-r-4 border-primary-neon"></div>
-                  <div className="absolute bottom-1 left-1 w-4 h-4 border-b-4 border-l-4 border-primary-neon"></div>
-                  <div className="absolute bottom-1 right-1 w-4 h-4 border-b-4 border-r-4 border-primary-neon"></div>
-                  
-                  <img src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://plyrz.at&color=000000`} alt="QR Code" className="w-full h-full" />
-                </div>
-              ))}
-            </motion.div>
           </div>
         </div>
       </section>
