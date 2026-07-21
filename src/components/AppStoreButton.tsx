@@ -13,7 +13,7 @@ export function AppStoreButton({ platform, className = '', outline = false }: Ap
 
   return (
     <a 
-      href={isIOS ? "https://apps.apple.com/app/id6762552423" : "https://play.google.com/store"} 
+      href={isIOS ? "https://apps.apple.com/app/id6762552423" : "https://play.google.com/store/apps/details?id=at.plyrz.app"} 
       target="_blank"
       rel="noopener noreferrer"
       className={`${baseClasses} ${className}`}
